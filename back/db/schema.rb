@@ -31,12 +31,11 @@ ActiveRecord::Schema.define(version: 2020_10_02_180131) do
   end
 
   create_table "options", force: :cascade do |t|
-    t.bigint "question_id", null: false
+    t.integer "choice_id", null: false
     t.string "text"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_options_on_question_id"
   end
 
   create_table "questionnaires", force: :cascade do |t|
@@ -61,6 +60,5 @@ ActiveRecord::Schema.define(version: 2020_10_02_180131) do
   add_foreign_key "answer_sheets", "questionnaires"
   add_foreign_key "answer_sheets", "users"
   add_foreign_key "answers", "answer_sheets"
-  add_foreign_key "options", "questions"
   add_foreign_key "questions", "questionnaires"
 end
