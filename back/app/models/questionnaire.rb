@@ -1,3 +1,4 @@
 class Questionnaire < ApplicationRecord
-    has_many :questions
+    has_many :choices
+    has_many :answer_sheets
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_02_165649) do
+ActiveRecord::Schema.define(version: 2020_10_02_180131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2020_10_02_165649) do
     t.index ["answer_sheet_id"], name: "index_answers_on_answer_sheet_id"
   end
 
+  create_table "options", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.string "text"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_options_on_question_id"
+  end
+
   create_table "questionnaires", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_10_02_165649) do
     t.bigint "questionnaire_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
     t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
   end
 
@@ -51,5 +61,6 @@ ActiveRecord::Schema.define(version: 2020_10_02_165649) do
   add_foreign_key "answer_sheets", "questionnaires"
   add_foreign_key "answer_sheets", "users"
   add_foreign_key "answers", "answer_sheets"
+  add_foreign_key "options", "questions"
   add_foreign_key "questions", "questionnaires"
 end
