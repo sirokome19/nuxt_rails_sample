@@ -6,8 +6,8 @@ services:
     image: postgres:11.4-alpine
     environment:
       - TZ=Asia/Tokyo
-    # volumes:
-    #   - ./back/tmp/db:/var/lib/postgresql/data
+    volumes:
+      - ./back/tmp/db:/var/lib/postgresql/data
 
   back:
     container_name: sample_back
