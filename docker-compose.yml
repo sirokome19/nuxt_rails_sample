@@ -16,8 +16,8 @@ services:
       - ./back:/app
     depends_on:
       - db
-    # ports:
-    #   - 3000:3000
+    ports:
+      - 3000:3000
 
   front:
     container_name: sample_front
