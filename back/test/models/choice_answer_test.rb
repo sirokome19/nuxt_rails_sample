@@ -8,7 +8,9 @@ class ChoiceAnswerTest < ActiveSupport::TestCase
     @choice_question=@questionnaire.choice_questions.create()
     @option=@choice_question.options.create()
     @choice_answer=@answersheet.choice_answers.new(answer_sheet_id:@answersheet.id, option_id:@option.id)
-    end
+    # @choice_answer=@answersheet.choice_answers.new(answer_sheet_id:@answersheet.id)
+    
+  end
 
   test "should be valid" do
     assert @choice_answer.valid?
