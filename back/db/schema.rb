@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_10_02_180131) do
   end
 
   create_table "options", force: :cascade do |t|
-    t.integer "choice_id", null: false
+    t.integer "choice_question_id", null: false
     t.string "text"
     t.string "image_url"
     t.datetime "created_at", null: false

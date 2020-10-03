@@ -5,5 +5,6 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_column :questions, :type, :string
   end
 end

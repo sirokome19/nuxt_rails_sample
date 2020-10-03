@@ -3,13 +3,13 @@ require 'test_helper'
 class OptionTest < ActiveSupport::TestCase
   def setup
     @questionnaire = Questionnaire.new()
-    @choice = @questionnaire.choices.new()
-    @option = @choice.options.new()
+    @choice_question = @questionnaire.choice_questions.new()
+    @option = @choice_question.options.new()
   end
 
   test "should be valid" do
     assert @option.valid?
-    assert @option.choice.valid?
-    assert @option.choice.questionnaire.valid?
+    assert @option.choice_question.valid?
+    assert @option.choice_question.questionnaire.valid?
   end
 end
