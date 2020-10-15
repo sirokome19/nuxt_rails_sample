@@ -38,7 +38,15 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios'
   ],
+  axios: {
+    proxy: true
+
+  },
+  proxy: {
+    '/api/': { target: 'http://back:3000', pathRewrite: { '^/api/': '/' } }
+  },
   /*
   ** Build configuration
   */
@@ -46,7 +54,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
   }
 }
