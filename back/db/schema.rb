@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_02_112641) do
+ActiveRecord::Schema.define(version: 2020_10_02_165649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answer_sheets", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "questionnaire_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "questionnaire_id"], name: "index_answer_sheets_on_user_id_and_questionnaire_id", unique: true
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "answer_sheet_id"
+    t.bigint "option_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type"
+    t.index ["answer_sheet_id"], name: "index_answers_on_answer_sheet_id"
+    t.index ["option_id"], name: "index_answers_on_option_id"
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.integer "choice_question_id", null: false
+    t.string "text"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questionnaires", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "questionnaire_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type"
+    t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -21,4 +60,9 @@ ActiveRecord::Schema.define(version: 2020_10_02_112641) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "answer_sheets", "questionnaires"
+  add_foreign_key "answer_sheets", "users"
+  add_foreign_key "answers", "answer_sheets"
+  add_foreign_key "answers", "options"
+  add_foreign_key "questions", "questionnaires"
 end
