@@ -3,8 +3,7 @@ require 'test_helper'
 class MakeQuestionsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user=users(:david)
-    @questionnaire = questionnaires(:one)
-    @questionnaire2 = questionnaires(:two)
+    @questionnaire = questionnaires(:q1)
     # @answersheet = AnswerSheet.create(user_id:@user.id, questionnaire_id:@questionnaire.id)
     # @order_question=@questionnaire.order_questions.create()
     # @choice_question=@order_question.choice_questions.create()
@@ -33,7 +32,7 @@ class MakeQuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update questionnaire" do
-    patch make_question_url(@questionnaire), params: { questionnaire: { abstract: @questionnaire2.abstract } }, as: :json
+    patch make_question_url(@questionnaire), params: { questionnaire: { abstract: @questionnaire.abstract } }, as: :json
     assert_response 200
   end
 

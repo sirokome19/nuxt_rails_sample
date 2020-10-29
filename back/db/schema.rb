@@ -45,15 +45,19 @@ ActiveRecord::Schema.define(version: 2020_10_02_165649) do
 
   create_table "order_answers", force: :cascade do |t|
     t.bigint "answer_sheet_id"
+    t.integer "order_num", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_sheet_id"], name: "index_order_answers_on_answer_sheet_id"
+    t.index ["order_num", "answer_sheet_id"], name: "index_order_answers_on_order_num_and_answer_sheet_id", unique: true
   end
 
   create_table "order_questions", force: :cascade do |t|
     t.bigint "questionnaire_id"
+    t.integer "order_num", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_num", "questionnaire_id"], name: "index_order_questions_on_order_num_and_questionnaire_id", unique: true
     t.index ["questionnaire_id"], name: "index_order_questions_on_questionnaire_id"
   end
 

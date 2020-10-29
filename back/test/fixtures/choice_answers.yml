@@ -4,6 +4,10 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-q1:
-    abstract: questionnaire1
+ca1:
+    order_answer: oa1
+    option: o1
 
+ca2:
+    order_answer: oa3
+    option: o2

@@ -5,7 +5,7 @@ class OrderAnswerTest < ActiveSupport::TestCase
     @user=User.create()
     @questionnaire = Questionnaire.create()
     @answersheet = AnswerSheet.create(user_id:@user.id, questionnaire_id:@questionnaire.id)
-    @order_answer=@answersheet.order_answers.new()
+    @order_answer=@answersheet.order_answers.new(order_num:0)
   end
   test "should be valid" do
     assert @order_answer.valid?
