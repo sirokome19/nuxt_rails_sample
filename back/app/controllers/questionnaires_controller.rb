@@ -1,4 +1,4 @@
-class MakeQuestionsController < ApplicationController
+class QuestionnairesController < ApplicationController
   before_action :set_questionnaire, only: [:show, :update, :destroy]
 
   # GET /questionnaires
@@ -16,7 +16,7 @@ class MakeQuestionsController < ApplicationController
     @questionnaire = Questionnaire.new(questionnaire_params)
 
     if @questionnaire.save
-      render json: @questionnaire, status: :created, location: make_questions_url(@questionnaire)
+      render json: @questionnaire, status: :created, location: @questionnaire
     else
       render json: @questionnaire.errors, status: :unprocessable_entity
     end

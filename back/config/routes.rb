@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :users
-  resources :make_questions
+  resources :questionnaires
   resources :answer_questions
 end
