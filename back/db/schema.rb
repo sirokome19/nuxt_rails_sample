@@ -24,13 +24,15 @@ ActiveRecord::Schema.define(version: 2020_10_02_165649) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.bigint "answer_sheet_id"
+    t.bigint "order_answer_id"
     t.bigint "option_id"
+    t.integer "free_question_id"
+    t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
-    t.index ["answer_sheet_id"], name: "index_answers_on_answer_sheet_id"
     t.index ["option_id"], name: "index_answers_on_option_id"
+    t.index ["order_answer_id"], name: "index_answers_on_order_answer_id"
   end
 
   create_table "options", force: :cascade do |t|
@@ -41,17 +43,31 @@ ActiveRecord::Schema.define(version: 2020_10_02_165649) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_answers", force: :cascade do |t|
+    t.bigint "answer_sheet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_sheet_id"], name: "index_order_answers_on_answer_sheet_id"
+  end
+
+  create_table "order_questions", force: :cascade do |t|
+    t.bigint "questionnaire_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["questionnaire_id"], name: "index_order_questions_on_questionnaire_id"
+  end
+
   create_table "questionnaires", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.bigint "questionnaire_id"
+    t.bigint "order_question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
-    t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
+    t.index ["order_question_id"], name: "index_questions_on_order_question_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,7 +78,9 @@ ActiveRecord::Schema.define(version: 2020_10_02_165649) do
 
   add_foreign_key "answer_sheets", "questionnaires"
   add_foreign_key "answer_sheets", "users"
-  add_foreign_key "answers", "answer_sheets"
   add_foreign_key "answers", "options"
-  add_foreign_key "questions", "questionnaires"
+  add_foreign_key "answers", "order_answers"
+  add_foreign_key "order_answers", "answer_sheets"
+  add_foreign_key "order_questions", "questionnaires"
+  add_foreign_key "questions", "order_questions"
 end

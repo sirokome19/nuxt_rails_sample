@@ -1,3 +1,3 @@
 class Question < ApplicationRecord
-  belongs_to :questionnaire
+  belongs_to :order_question
 end
