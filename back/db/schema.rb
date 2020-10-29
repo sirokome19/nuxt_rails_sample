@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_10_02_165649) do
   end
 
   create_table "questionnaires", force: :cascade do |t|
+    t.string "abstract"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
