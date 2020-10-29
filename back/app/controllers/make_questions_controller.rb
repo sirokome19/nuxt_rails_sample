@@ -1,5 +1,5 @@
 class MakeQuestionsController < ApplicationController
-  before_action :set_questionnaire, only: [:show]#, :update, :destroy]
+  before_action :set_questionnaire, only: [:show, :update, :destroy]
 
   # GET /questionnaires
   def index
@@ -20,6 +20,19 @@ class MakeQuestionsController < ApplicationController
     else
       render json: @questionnaire.errors, status: :unprocessable_entity
     end
+  end
+# PATCH/PUT /questionnaires/1
+  def update
+    if @questionnaire.update(questionnaire_params)
+      render json: @questionnaire
+    else
+      render json: @questionnaire.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /questionnaires/1
+  def destroy
+    @questionnaire.destroy
   end
   private
     # Use callbacks to share common setup or constraints between actions.

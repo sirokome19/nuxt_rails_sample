@@ -27,9 +27,21 @@ class MakeQuestionsControllerTest < ActionDispatch::IntegrationTest
     assert_response 201
   end
 
-  test "should show user" do
-    get make_questions_url(@questionnaire), as: :json
+  test "should show questionnaire" do
+    get make_question_url(@questionnaire), as: :json
     assert_response :success
+  end
+
+  test "should update questionnaire" do
+    patch make_question_url(@questionnaire), params: { questionnaire: { abstract: @questionnaire2.abstract } }, as: :json
+    assert_response 200
+  end
+
+  test "should destroy questionnaire" do
+    assert_difference('Questionnaire.count', -1) do
+      delete make_question_url(@questionnaire), as: :json
+    end
+    assert_response 204
   end
   
 end
