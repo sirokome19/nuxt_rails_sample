@@ -81,11 +81,11 @@ ActiveRecord::Schema.define(version: 2020_10_02_165649) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "answer_sheets", "questionnaires"
-  add_foreign_key "answer_sheets", "users"
-  add_foreign_key "answers", "options"
-  add_foreign_key "answers", "order_answers"
-  add_foreign_key "order_answers", "answer_sheets"
-  add_foreign_key "order_questions", "questionnaires"
-  add_foreign_key "questions", "order_questions"
+  add_foreign_key "answer_sheets", "questionnaires", on_delete: :cascade
+  add_foreign_key "answer_sheets", "users", on_delete: :cascade
+  add_foreign_key "answers", "options", on_delete: :cascade
+  add_foreign_key "answers", "order_answers", on_delete: :cascade
+  add_foreign_key "order_answers", "answer_sheets", on_delete: :cascade
+  add_foreign_key "order_questions", "questionnaires", on_delete: :cascade
+  add_foreign_key "questions", "order_questions", on_delete: :cascade
 end
