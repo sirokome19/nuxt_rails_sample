@@ -13,9 +13,17 @@ class QuestionnairesController < ApplicationController
       include: {
         order_questions: {
           only: [:order_num],
-          include: {
-            choice_questions:{
-              
+          include:{
+            choice_question:{
+              only:[],
+              include: {
+                options:{
+                  only:[:text, :image_url]
+                }
+              }
+            },
+            free_question:{
+              only:[:text]
             }
           }
         }
@@ -36,14 +44,14 @@ class QuestionnairesController < ApplicationController
           # save each type's questions
           case question_params.require(:type)
           when "ChoiceQuestion" then
-            @question=@order_question.choice_questions.new()
+            @question=@order_question.build_choice_question
             if @question.save
               for option_params in question_params.require(:options) do
                 @question.options.create(option_params)
               end
             end
           when "FreeQuestion" then
-            @order_question.free_questions.create(text: question_params.require(:text))
+            @order_question.create_free_question(text: question_params.require(:text))
           else
             print("undefined type error")
           end

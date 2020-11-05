@@ -1,5 +1,5 @@
 class OrderQuestion < ApplicationRecord
     belongs_to :questionnaire
-    has_many :choice_questions
-    has_many :free_questions
+    has_one :choice_question
+    has_one :free_question
 end
