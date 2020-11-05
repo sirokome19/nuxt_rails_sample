@@ -39,6 +39,8 @@ class QuestionnairesController < ApplicationController
     if @questionnaire.save
       idx=0
       # each with index
+      # こけたらrollbackできるようにする
+      # database側でtransaction単位にできる
       for question_params in order_questions_params.require(:order_questions) do
         @order_question=@questionnaire.order_questions.new(order_num: idx)
         if @order_question.save
