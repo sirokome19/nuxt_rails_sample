@@ -1,3 +1,3 @@
 class ChoiceQuestion < Question
-    has_many :options
+  has_many :options
 end

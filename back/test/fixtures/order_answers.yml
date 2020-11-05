@@ -4,18 +4,18 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-ca1:
-    order_answer: oa1
-    option: o1
-    
-fa1:
-    order_answer: oa2
-    text: free_hogehoge
+oa1: 
+    answer_sheet: as1
+    order_num: 0
 
-ca2:
-    order_answer: oa3
-    option: o2
+oa2:
+    answer_sheet: as1
+    order_num: 1
 
-fa2:
-    order_answer: oa4
-    text: free_fugafuga
+oa3: 
+    answer_sheet: as2
+    order_num: 0
+
+oa4:
+    answer_sheet: as2
+    order_num: 1

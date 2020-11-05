@@ -1,7 +1,11 @@
-# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   question: one
+o1:
+  choice_question: oq1
+  text: option1
+  image_url: image_url1
 
-# two:
-#   question: two
+o2:
+  choice_question: oq1
+  text: option2
+  image_url: image_url2
