@@ -6,8 +6,8 @@ class AnswerTest < ActiveSupport::TestCase
     @questionnaire = Questionnaire.create()
     @answersheet = AnswerSheet.create(user_id:@user.id, questionnaire_id:@questionnaire.id)
     @order_question=@questionnaire.order_questions.create(order_num:0)
-    @choice_question=@order_question.choice_questions.create()
-    @free_question=@order_question.free_questions.create()
+    @choice_question=@order_question.create_choice_question()
+    @free_question=@order_question.create_free_question()
     @option=@choice_question.options.create()
 
     @order_answer=@answersheet.order_answers.create(order_num:0,answer_sheet_id:@answersheet.id)

@@ -35,6 +35,10 @@ class QuestionnairesControllerTest < ActionDispatch::IntegrationTest
       post questionnaires_url, params: {
         questionnaire: {
         abstract: @questionnaire.abstract,
+        order_questions:[{
+          type:"FreeQuestion",
+          text:"hoge"
+        }]
         }
       }, as: :json
     end

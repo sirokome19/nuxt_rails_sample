@@ -4,8 +4,8 @@ class QuestionTest < ActiveSupport::TestCase
   def setup
     @questionnaire = Questionnaire.create()
     @order_question = @questionnaire.order_questions.create(order_num:0)
-    @choice_question = @order_question.choice_questions.new()
-    @free_question = @order_question.free_questions.new()
+    @choice_question = @order_question.build_choice_question()
+    @free_question = @order_question.build_free_question()
 
   end
 
