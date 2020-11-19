@@ -54,8 +54,6 @@
                 </label>
               </div>
             </label>
-            {{ question }}
-            {{ key }}
           </div>
         </div>
 
@@ -69,8 +67,6 @@
         </div>
         <button type="submit">submit</button>
       </form>
-      {{ this.abstract }}
-      {{ this.order_questions }}
     </div>
   </section>
 </template>
@@ -91,7 +87,6 @@ export default {
         options: [],
       };
       this.order_questions.push(additionalChoiceQuestion);
-      console.log(this.order_questions);
     },
     addChoiceOption: function (idx) {
       const additionalOption = {
@@ -117,7 +112,6 @@ export default {
         })
         .then((res) => {
           this.$router.push(`${res.data.id}`);
-          // console.log(res);
         });
     },
   },
