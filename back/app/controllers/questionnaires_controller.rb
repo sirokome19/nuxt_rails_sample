@@ -35,30 +35,21 @@ class QuestionnairesController < ApplicationController
 
   # POST /questionnaires
   def create
-    @questionnaire = Questionnaire.new(questionnaire_params)
-    if @questionnaire.save
-      idx=0
-      # each with index
-      # こけたらrollbackできるようにする
-      # database側でtransaction単位にできる
-      for question_params in order_questions_params.require(:order_questions) do
-        @order_question=@questionnaire.order_questions.new(order_num: idx)
-        if @order_question.save
-          idx+=1
-          # save each type's questions
-          case question_params.require(:type)
-          when "ChoiceQuestion" then
-            @question=@order_question.build_choice_question
-            if @question.save
-              for option_params in question_params.require(:options) do
-                @question.options.create(option_params)
-              end
-            end
-          when "FreeQuestion" then
-            @order_question.create_free_question(text: question_params.require(:text))
-          else
-            print("undefined type error")
+    ActiveRecord::Base.transaction do
+      @questionnaire = Questionnaire.create!(questionnaire_params)
+      order_questions_params.require(:order_questions).each_with_index do |question_params, idx|
+        @order_question=@questionnaire.order_questions.create!(order_num: idx)
+        # save each type's questions
+        case question_params.require(:type)
+        when "ChoiceQuestion" then
+          @question=@order_question.create_choice_question!
+          question_params.require(:options).each do |option_params|
+            @question.options.create(option_params)
           end
+        when "FreeQuestion" then
+          @order_question.create_free_question!(text: question_params.require(:text))
+        else
+          raise RuntimeError, "undefined question type error"
         end
       end
     end
