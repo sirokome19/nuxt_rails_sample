@@ -16,7 +16,7 @@ class QuestionnairesController < ApplicationController
           only: [:order_num],
           include:{
             choice_question:{
-              only:[],
+              only:[:text],
               include: {
                 options:{
                   only:[:text, :image_url]
@@ -53,6 +53,7 @@ class QuestionnairesController < ApplicationController
         end
       end
     end
+    render json: @questionnaire
   end
 # PATCH/PUT /questionnaires/1
   def update
