@@ -1,4 +1,4 @@
-class AnswerQuestionsController < ApplicationController
+class AnswerSheetsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
 
   def index
