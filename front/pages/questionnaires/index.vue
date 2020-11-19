@@ -1,9 +1,14 @@
 <template>
-  <ul>
-    <li v-for="questionnaire in questionnaires" :key="questionnaire.id">
-      {{ questionnaire.abstract }}
-    </li>
-  </ul>
+  <div class="container">
+    <ul>
+      <li v-for="questionnaire in questionnaires" :key="questionnaire.id">
+        <router-link :to="{ path: `questionnaires/${questionnaire.id}` }">
+          {{ questionnaire.abstract }}
+        </router-link>
+      </li>
+    </ul>
+    <a href="questionnaires/new" class="button--green"> add Questionnaire </a>
+  </div>
 </template>
 
 <script>

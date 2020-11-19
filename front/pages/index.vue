@@ -1,44 +1,18 @@
 <template>
   <div class="container">
-    <h1 v-if="pushed">a</h1>
-    <button v-on:click="tmp">tmp</button>
-
     <div>
-      <logo />
       <h1 class="title">sample_app</h1>
       <h2 class="subtitle">sample_app</h2>
       <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+        <a href="questionnaires" class="button--green"> make question </a>
+        <a href="" class="button--grey"> Answer </a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue";
-
-export default {
-  components: {
-    Logo,
-  },
-  data() {
-    return { pushed: false };
-  },
-  methods: {
-    tmp: function (event) {
-      this.pushed = true;
-    },
-  },
-};
+export default {};
 </script>
 
 <style>

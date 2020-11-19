@@ -42,7 +42,7 @@ class QuestionnairesController < ApplicationController
         # save each type's questions
         case question_params.require(:type)
         when "ChoiceQuestion" then
-          @question=@order_question.create_choice_question!
+          @question=@order_question.create_choice_question!(text: question_params.require(:text))
           question_params.require(:options).each do |option_params|
             @question.options.create(option_params)
           end

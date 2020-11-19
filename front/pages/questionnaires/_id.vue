@@ -4,19 +4,23 @@
       {{ res.abstract }}
     </h1>
     <ul>
-      <li v-for="question in res.order_questions" :key="question.order_num">
+      <div v-for="question in res.order_questions" :key="question.order_num">
         <div v-if="question.choice_question">
-          <div
-            v-for="option in question.choice_question.options"
-            :key="option.text"
-          >
-            {{ option.text }}
-          </div>
+          <h2>- {{ question.choice_question.text }}</h2>
+          <ul>
+            <li
+              v-for="(option, key) in question.choice_question.options"
+              :key="key"
+            >
+              {{ option.text }}
+              {{ option.image_url }}
+            </li>
+          </ul>
         </div>
         <div v-if="question.free_question">
-          {{ question.free_question.text }}
+          <h2>- {{ question.free_question.text }}</h2>
         </div>
-      </li>
+      </div>
     </ul>
   </div>
 </template>
