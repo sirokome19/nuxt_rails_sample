@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1>質問一覧</h1>
     <ul>
       <li v-for="questionnaire in questionnaires" :key="questionnaire.id">
         <router-link :to="{ path: `/answer_sheets/${questionnaire.id}` }">
