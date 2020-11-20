@@ -19,12 +19,12 @@ class QuestionnairesController < ApplicationController
               only:[:text],
               include: {
                 options:{
-                  only:[:text, :image_url]
+                  only:[:id, :text, :image_url]
                 }
               }
             },
             free_question:{
-              only:[:text]
+              only:[:id, :text]
             }
           }
         }
