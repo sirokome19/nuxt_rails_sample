@@ -70,16 +70,17 @@ export default {
   },
   methods: {
     post() {
-      this.$axios.post("/api/answer_sheets", {
-        answer_sheet: {
-          user_id: 4, // 後でログイン情報からとってくる
-          questionnaire_id: questionnaire_id,
-          order_answers: this.order_answers,
-        },
-      });
-      // .then((res) => {
-      //   this.$router.push(`${res.data.id}`);
-      // });
+      this.$axios
+        .post("/api/answer_sheets", {
+          answer_sheet: {
+            user_id: 5, // 後でログイン情報からとってくる
+            questionnaire_id: this.questionnaire_id,
+            order_answers: this.order_answers,
+          },
+        })
+        .then(() => {
+          this.$router.push("/answer_sheets");
+        });
     },
   },
 };

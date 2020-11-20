@@ -111,7 +111,7 @@ export default {
           },
         })
         .then((res) => {
-          this.$router.push(`${res.data.id}`);
+          this.$router.push(`/questionnaires/${res.data.id}`);
         });
     },
   },
