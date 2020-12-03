@@ -4,8 +4,8 @@
       <h1 class="title">sample_app</h1>
       <h2 class="subtitle">sample_app</h2>
       <div class="links">
-        <a href="questionnaires" class="button--green"> make question </a>
-        <a href="" class="button--grey"> Answer </a>
+        <a href="/questionnaires/" class="button--green"> make question </a>
+        <a href="/answer_sheets/" class="button--grey"> Answer </a>
       </div>
     </div>
   </div>

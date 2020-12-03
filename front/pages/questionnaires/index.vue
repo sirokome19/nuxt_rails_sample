@@ -2,7 +2,7 @@
   <div class="container">
     <ul>
       <li v-for="questionnaire in questionnaires" :key="questionnaire.id">
-        <router-link :to="{ path: `questionnaires/${questionnaire.id}` }">
+        <router-link :to="{ path: `/questionnaires/${questionnaire.id}` }">
           {{ questionnaire.abstract }}
         </router-link>
       </li>
