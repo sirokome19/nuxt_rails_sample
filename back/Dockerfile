@@ -1,4 +1,4 @@
-FROM ruby:2.6.3-alpine3.10
+FROM ruby:2.6.6-alpine3.12
 
 ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql git" \
     DEV_PACKAGES="build-base curl-dev" \
