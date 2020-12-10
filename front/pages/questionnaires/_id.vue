@@ -13,7 +13,8 @@
               :key="key"
             >
               {{ option.text }}
-              {{ option.image_url }}
+              <img :src="option.image_url" />
+              <!-- <a href="option.image_url">{{ option.image_url }}</a> -->
             </li>
           </ul>
         </div>

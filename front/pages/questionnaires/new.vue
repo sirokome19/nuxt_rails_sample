@@ -30,10 +30,16 @@
                       />
                       <input
                         class="OptionImageURL"
+                        @change="uploadFile(idx, key, $event)"
+                        type="file"
+                        placeholder="URL"
+                      />
+                      <!-- <input
+                        class="OptionImageURL"
                         v-model="option['image_url']"
                         type="text"
                         placeholder="URL"
-                      />
+                      /> -->
                     </label>
                   </div>
                 </div>
@@ -80,6 +86,20 @@ export default {
     };
   },
   methods: {
+    uploadFile: function (problemID, optionID, e) {
+      e.preventDefault();
+      const file = e.target.files[0];
+      let formData = new FormData();
+      formData.append("file", file);
+      this.$axios
+        .post("/api/upload", formData, {
+          headers: { "content-type": "multipart/form-data" },
+        })
+        .then((res) => {
+          this.order_questions[problemID]["options"][optionID]["image_url"] =
+            res.data.image_url;
+        });
+    },
     addChoiceQuestion: function (event) {
       const additionalChoiceQuestion = {
         type: "ChoiceQuestion",

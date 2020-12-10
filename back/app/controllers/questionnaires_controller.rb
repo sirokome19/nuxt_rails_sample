@@ -1,3 +1,5 @@
+# require_relative "./util_controller"
+
 class QuestionnairesController < ApplicationController
   before_action :set_questionnaire, only: [:show, :update, :destroy]
 

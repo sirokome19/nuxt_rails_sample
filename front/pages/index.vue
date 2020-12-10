@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">sample_app</h1>
+      <h1 class="title">Questionnaire_app</h1>
       <h2 class="subtitle">sample_app</h2>
       <div class="links">
         <a href="/questionnaires/" class="button--green"> make question </a>

@@ -29,3 +29,14 @@ services:
       - 8080:3000
     depends_on:
       - back
+
+  minio:
+    image: minio/minio
+    volumes:
+    - ./minio:/data
+    ports:
+    - "9000:9000"
+    environment:
+      MINIO_ACCESS_KEY: hogehoge
+      MINIO_SECRET_KEY: hogehoge
+    command: server /data
