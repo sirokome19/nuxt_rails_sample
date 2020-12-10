@@ -1,3 +1,5 @@
+# require_relative "./util_controller"
+
 class QuestionnairesController < ApplicationController
   before_action :set_questionnaire, only: [:show, :update, :destroy]
 
@@ -44,6 +46,7 @@ class QuestionnairesController < ApplicationController
         when "ChoiceQuestion" then
           @question=@order_question.create_choice_question!(text: question_params.require(:text))
           question_params.require(:options).each do |option_params|
+            # upload(bucket_name: "fugafuga", filename: option_params["image_url"])
             @question.options.create(option_params)
           end
         when "FreeQuestion" then
