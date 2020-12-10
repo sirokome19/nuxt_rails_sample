@@ -8,6 +8,7 @@
       </li>
     </ul>
     <a href="/questionnaires/new" class="button--green"> add Questionnaire </a>
+    <a href="/" class="button--grey"> back home </a>
   </div>
 </template>
 

@@ -8,6 +8,7 @@
         </router-link>
       </li>
     </ul>
+    <a href="/" class="button--grey"> back home </a>
   </div>
 </template>
 
