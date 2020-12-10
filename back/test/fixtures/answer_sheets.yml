@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-as1:
-  user: david
-  questionnaire: q1
-
-as2:
-  user: steve
-  questionnaire: q1
