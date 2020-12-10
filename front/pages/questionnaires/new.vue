@@ -87,7 +87,6 @@ export default {
   },
   methods: {
     uploadFile: function (problemID, optionID, e) {
-      console.log(problemID);
       e.preventDefault();
       const file = e.target.files[0];
       let formData = new FormData();
@@ -99,7 +98,6 @@ export default {
         .then((res) => {
           this.order_questions[problemID]["options"][optionID]["image_url"] =
             res.data.image_url;
-          console.log(this.order_questions);
         });
     },
     addChoiceQuestion: function (event) {

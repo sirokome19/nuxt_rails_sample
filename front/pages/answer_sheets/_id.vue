@@ -17,11 +17,14 @@
                 v-for="(option, key) in question.choice_question.options"
                 :key="key"
               >
-                <input
-                  type="radio"
-                  :value="option.id"
-                  v-model="order_answers[question_num].option_id"
-                />{{ option.text }}
+                <div class="option">
+                  <input
+                    type="radio"
+                    :value="option.id"
+                    v-model="order_answers[question_num].option_id"
+                  />{{ option.text }}
+                  <img :src="option.image_url" />
+                </div>
               </li>
             </ul>
           </div>

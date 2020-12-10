@@ -1,9 +1,12 @@
 class UtilController < ApplicationController
   def upload
-    filename = "filename.png" #S3のファイル名
     upload_file = params[:file]
-    s3_client.put_object(bucket: bucket, key: filename, body: upload_file.read)
-    render json: {image_url:"http://minio:9000/#{bucket}/#{filename}"}
+    ext=File.extname(upload_file.original_filename)
+
+    filename=SecureRandom.uuid+ext
+
+    s3_client.put_object(bucket: bucket, key: filename, body: upload_file.read, content_type:"image/png")
+    render json: {image_url:"/#{bucket}/#{filename}"}
   end
 
   private
