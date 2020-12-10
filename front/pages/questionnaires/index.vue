@@ -7,7 +7,7 @@
         </router-link>
       </li>
     </ul>
-    <a href="questionnaires/new" class="button--green"> add Questionnaire </a>
+    <a href="/questionnaires/new" class="button--green"> add Questionnaire </a>
   </div>
 </template>
 
